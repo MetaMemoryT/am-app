@@ -58,8 +58,12 @@
 
 / .gitignore
 / git
-run-instructions.txt
-
+/ run-instructions.txt
+run all functionality
+  - run login
+  - 
+backup
+run all tests
 github desktop
 tests
 web sockets hello world

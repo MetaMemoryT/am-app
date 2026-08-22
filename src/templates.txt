@@ -80,8 +80,18 @@ Orders Left Today: <div id="ordersLeftToday">{ordersLeftToday}</div> <br>
 --
 tests
 <a href="/webSocketsHelloWorld">Web Sockets Hello World</a>
+This test should display a message in the terminal like this:
+<br>
+127.0.0.1 - - [22/Aug/2026 13:08:04] websocket received "{"messageType": "basicMessage", "data": "hello websocket"}"
+
+<br>
 <a href="/testImage">Test Image</a>
+This test should display a bolt.
+<br>
 <a href="/testMoney">Money Test Page</a>
+This test should display $0.59 and $0.54 added together.
+<br>
+
 <a href="/verifyNameWithDrivers">verify name with drivers license</a>
 <a href="/glassCrusher">Glass Crusher</a>
 <a href="/amazonPurchase">Amazon Purchases</a>
