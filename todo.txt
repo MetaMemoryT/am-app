@@ -56,8 +56,10 @@
 / cmake
 / make
 
-.gitignore
-git
+/ .gitignore
+/ git
+run-instructions.txt
+
 github desktop
 tests
 web sockets hello world

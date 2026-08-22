@@ -1,0 +1,4 @@
+This makes the paths work
+
+cd build
+../cli -run-websockets
