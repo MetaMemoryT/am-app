@@ -59,6 +59,8 @@
 / .gitignore
 / git
 / run-instructions.txt
+get am-app running on windows
+
 run all functionality
   - run login
   - 
