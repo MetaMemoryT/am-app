@@ -1,0 +1,212 @@
+page 1
+--
+page 2 <br>
+second line
+--
+WebSockets Hello World <br>
+<button onclick="sendMessage()">Send Message</button> <br>
+Message Results: <br>
+<script src="js/webSockets.js"></script>
+--
+<form action="/loginPost" method="post">  
+    <div class="container">   
+        <label>Username : </label>   
+        <input type="text" placeholder="Enter Username" name="username" required> <br>
+        <label>Password : </label>
+        <input type="password" placeholder="Enter Password" name="password" required> <br> 
+        <button type="submit">Login</button>
+        <input type="checkbox" checked="checked"> Remember me   
+        <button type="button" class="cancelbtn"> Cancel</button> <br>
+        Forgot <a href="#"> password? </a>   
+    </div>   
+</form>
+--
+home - 
+<a href="/deposit">deposit</a> 
+<a href="/login">login</a> 
+<a href="/register">register</a> 
+<a href="/editName">edit name</a>
+<a href="/addFriend">Add Friend</a>
+<a href="/verifyName">verify name of others</a>
+
+<a href="/grabOrder">grab order</a>
+<a href="/tests">tests</a>
+<br>
+Balance: {balance} <br>
+--
+<form action="/registerPost" method="post">  
+    <div class="container">   
+        <label>Username : </label>   
+        <input type="text" placeholder="Enter Username" name="username" required> <br>
+        <label>Password : </label>
+        <input type="password" placeholder="Enter Password" name="password" required> <br> 
+        <label>Repeat Password : </label>
+        <input type="password" placeholder="Enter Password" name="password" required> <br> 
+        <button type="submit">Register</button> 
+        <button type="button" class="cancelbtn"> Cancel</button> <br>  
+    </div>   
+</form>
+--
+<form action="/editNamePost" method="post">  
+    <div class="container">   
+        <label>First Name </label>   
+        <input type="text" placeholder="Enter First Name" name="firstname" value="{firstname}" required> <br>
+        <label>Last Name : </label>
+        <input type="text" placeholder="Enter Last Name" name="lastname" value="{lastname}" required> <br> 
+        <button type="submit">Submit</button> 
+    </div>   
+</form>
+--
+to deposit etransfer $49 to newsystems@gmail.com <br>
+write your full name in the etransfer description
+--
+<head>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+grab order
+
+<button onclick="autograb()">Autograb</button> <br>
+
+<div id="block_container">
+  <div id="block1">Balance: </div>
+  <div id="balance">{balance}</div>
+</div>
+ <br>
+Orders Left Today: <div id="ordersLeftToday">{ordersLeftToday}</div> <br>
+<div id="order"></div>
+<script src="js/webSockets.js"></script>
+</body>
+--
+tests
+<a href="/webSocketsHelloWorld">Web Sockets Hello World</a>
+<a href="/testImage">Test Image</a>
+<a href="/testMoney">Money Test Page</a>
+<a href="/verifyNameWithDrivers">verify name with drivers license</a>
+<a href="/glassCrusher">Glass Crusher</a>
+<a href="/amazonPurchase">Amazon Purchases</a>
+<a href="/gedExamSubjects">GED Exam Subjects</a>
+--
+<img src="img/brake_adjusting_screw.jpeg"></img>
+--
+Money Test Page <br>
+value1: {value1} <br>
+value2: {value2} <br>
+sum: {sum}
+--
+Verify Name with Drivers
+<form action="/uploadLicensePost" method="post" enctype="multipart/form-data">
+  Select drivers license image to upload:
+  <input type="file" name="fileToUpload" id="fileToUpload">
+  <input type="submit" value="Upload Image" name="submit">
+</form>
+--
+Add Friend <br>
+Search For Name: <br>
+<form action="/searchName" method="post">  
+    <div class="container">   
+        <label>Full Name </label>   
+        <input type="text" placeholder="Enter Full Name" name="firstname" value="" required> <br>
+        <button type="submit">Submit</button> 
+    </div>   
+</form>
+List of Names <br>
+<table>
+  {for e in items}
+    <tr>
+      <td> {e} <button onclick="addFriend()">Add Friend</button> </td>
+    </tr>
+  {end for}
+</table>
+--
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Glass Crusher</title>
+		<style>
+			body { margin: 0; }
+		</style>
+	</head>
+	<body>
+		<script src="js/three.js"></script>
+    <script src="js/glassCrusher.js"></script>
+  </body>
+</html>
+--
+Amazon Purchases
+Jan. 6 2023 - Rustler Mens Classic Regular Fit 34W x 32L
+Jan. 15 2023 - Rustler Mens Classic Regular Fit 36W x 32L
+--
+Credit Line payments
+Jan. 23 2023 - 400 payment
+Jan. 23 2023 - balance: 9,855.97
+--
+GED exam Subjects <br>
+<a href="/mathematics">Mathematics</a> <br>
+Language Arts, Reading <br>
+Language Arts, Writing <br>
+Social Studies <br>
+Science
+--
+Mathematics <br>
+Last month, the balance in Tisha's checkbook was $1219.17. Since then she has deposited her latest paycheck of $2425.66 and written checks for $850.00 (rent), $235.89 (car payment), and $418.37 (credit card payment).
+<br>
+What is the current balance in Tisha's checking account? <br>
+
+
+<div class="form-check sample-question__answer ">
+                        <input class="form-check-input" type="checkbox" value="" id="answer-0">
+                        <label class="form-check-label" for="answer-0">$921.40</label>
+                        <div class="sample-question__answers-detail alert-danger">
+                            <svg class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg>
+                            <p class="sample-question__answers-detail-text " id="detail-0">Incorrect - try again!</p>                        
+</div>                  
+</div>
+<div class="form-check sample-question__answer correct">
+                        <input class="form-check-input" type="checkbox" value="" id="answer-1">
+                        <label class="form-check-label" for="answer-1">$2,140.57</label>
+                        <div class="sample-question__answers-detail alert-success">
+                            <svg class="icon icon-checkmark"><use xlink:href="#icon-checkmark"></use></svg>
+                            <p class="sample-question__answers-detail-text " id="detail-1">The paycheck would be added to the existing balance, and the checks written would be subtracted. The realistic amounts in the question would require considerable time for the arithmetic to be done by hand, but the values can be entered into the calculator in one continuous string as they are presented in the expression.
+
+New balance = Old balance + paycheck deposited - checks written
+
+New balance = 1219.17 + 2425.66 - 850.00 - 235.89 - 418.37
+
+New balance = $2140.57</p>                        </div>
+                        
+                        </div>
+                
+
+<div class="form-check sample-question__answer ">
+                        <input class="form-check-input" type="checkbox" value="" id="answer-2">
+                        <label class="form-check-label" for="answer-2">$3,215.27</label>
+                        <div class="sample-question__answers-detail alert-danger">
+                            <svg class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg>
+                            <p class="sample-question__answers-detail-text " id="detail-2">Incorrect - try again!</p>                        </div>
+                        
+                        </div>
+
+<div class="form-check sample-question__answer ">
+                        <input class="form-check-input" type="checkbox" value="" id="answer-3">
+                        <label class="form-check-label" for="answer-3">$3,929.92</label>
+                        <div class="sample-question__answers-detail alert-danger">
+                            <svg class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg>
+                            <p class="sample-question__answers-detail-text " id="detail-3">Incorrect - try again!</p>                        </div>
+                        
+                        </div>
+
+
+<div class="form-check sample-question__answer ">
+                        <input class="form-check-input" type="checkbox" value="" id="answer-4">
+                        <label class="form-check-label" for="answer-4">$5,149.09</label>
+                        <div class="sample-question__answers-detail alert-danger">
+                            <svg class="icon icon-cross"><use xlink:href="#icon-cross"></use></svg>
+                            <p class="sample-question__answers-detail-text " id="detail-4">Incorrect - try again!</p>                        </div>
+                        
+                        </div>
+--
+crypto
+3BQNPPBL8D
+39RD7F6nTDLx4jv6F8Rv8mXW464JFwsLde

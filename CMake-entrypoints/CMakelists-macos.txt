@@ -1,0 +1,27 @@
+cmake_minimum_required(VERSION 3.1)
+
+project(ProjectName)
+
+# python 1
+# /Users/seanusick/p/python-embed/libs/cpython/Include:/Users/seanusick/p/python-embed/libs/cpython
+set(PYTHON_EMBED_DIR /Users/seanusick/p/python-embed)
+set(CPYTHON_INCLUDE_DIR ${PYTHON_EMBED_DIR}/libs/cpython/Include ${PYTHON_EMBED_DIR}/libs/cpython)
+set(CPYTHON_LIBRARY_DIR ${PYTHON_EMBED_DIR}/libs/cpython)
+set(CPYTHON_LIBRARY libpython3.10.dylib)
+set(CPYTHON_BIN ${PYTHON_EMBED_DIR}/libs/cpython/libpython3.10.dylib)
+link_directories(${CPYTHON_LIBRARY_DIR})
+
+add_executable(cli
+	src/cli.cpp
+)
+
+# python 2
+target_include_directories(cli PRIVATE ${CPYTHON_INCLUDE_DIR})
+
+target_include_directories(cli PRIVATE src)
+
+# python 3
+# On MSVC build, the python library is automatically linked (crazy I know)
+if(NOT MSVC)
+  target_link_libraries(cli PRIVATE ${CPYTHON_LIBRARY})
+endif()

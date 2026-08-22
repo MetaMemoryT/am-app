@@ -1,0 +1,95 @@
+/ http
+/ c++ dict
+/ multipage
+/ templates file
+/ buildTemplateMap
+/ buildRouteMap
+/ setResponseOk
+/ graphics-engine insert some source code
+/ websocketsHelloWorld
+/ python built in http server do_post
+/ python built in http server do redirect
+/ python built in http server cookie session
+/ read cookie on home path
+/ highlight username text in light blue
+/ ./cli -create-db
+
+/ login
+/ register
+/ edit name
+/ editNamePost
+/ form
+/ fill in with existing name
+
+/ home - deposit
+/ deposit
+/ home - you are now logged in as: John Doe
+/ testImage
+/ img/brake_adjusting_screw.jpeg
+/ basePath - graphics-engine
+
+/ grab order - price
+
+/ money test page - decimal module
+
+/ user table - balance
+/ Balance - home page
+// user table - balance_d balance_c
+/ orders left for today
+/ grab order - balance
+
+/ profit
+/ partState
+/ activeTradeProfit
+/ store information on backend then easy to use decimal library to make calcs
+/ trade - balance goes up, 
+/ trade - order disapears, 
+/ trade - orderLeftToday-1
+/ trade - partState+1
+/ 5 more parts
+/ forloop.py
+
+/ "/addFriend" button
+
+/ grab order - balance formatting
+
+/ cmake
+/ make
+
+.gitignore
+git
+github desktop
+tests
+web sockets hello world
+
+template firstFor
+
+subcontract
+
+GED exam
+
+cmake debug instructions
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+
+graphics-engine lexMixed.py - port testDbTemplate
+
+credit line payments
+
+amazon purchases
+friends in database
+friendsList
+glassCrusher - top front side view
+confirm friend
+format parts in db script
+15 more parts
+withdraw must have 3 friends
+weekly profit table
+register captcha
+private messages
+tutorial
+request trial funds
+
+grab order - price, amount frozen, profit
+public forum
+
+settings

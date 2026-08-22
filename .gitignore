@@ -1,0 +1,17 @@
+
+CMakeCache.txt
+CMakelists.txt
+build
+build-lexm
+html-reports
+external
+__pycache__
+lib
+temp
+build-old
+cli
+CMakeFiles
+.vscode
+cmake_install.cmake
+data.db
+Makefile
