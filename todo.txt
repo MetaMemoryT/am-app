@@ -59,7 +59,12 @@
 / .gitignore
 / git
 / run-instructions.txt
+backup-instructions.txt
+backup-script.py
+
 get am-app running on windows
+hotswap
+hotswap tests
 
 run all functionality
   - run login
