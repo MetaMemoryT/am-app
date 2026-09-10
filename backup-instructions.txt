@@ -1,0 +1,6 @@
+I run into this problem again and again.
+how to work with git repositories on multiple computers.
+One solution to this problem is to sync repositories on
+a flash drive.
+backup-script.py is a starting point to automate the backup
+process.
