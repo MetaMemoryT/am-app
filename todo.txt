@@ -62,6 +62,9 @@
 backup-instructions.txt
 backup-script.py
 
+An error appeared in vs code on Mon, Sep 14, 2026
+#include errors detected. Please update your includePath. Squiggles are disabled for this translation unit 
+
 get am-app running on windows
 hotswap
 hotswap tests
