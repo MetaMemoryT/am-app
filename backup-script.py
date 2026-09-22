@@ -10,3 +10,12 @@ if sys.argv[1] == "--clone-bare":
     subprocess.Popen(["git", "clone",
         "--bare", "/Users/seanusick/p/am-app",
         "/Users/seanusick/fd-git-backup/am-app.git"])
+if sys.argv[1] == "--remote-add":
+    print("git remote add origin")
+    subprocess.Popen(["git", "remote",
+        "add", "origin",
+        "/Users/seanusick/fd-git-backup/am-app.git"])
+if sys.argv[1] == "--push-origin":
+    print("git push -u origin main")
+    subprocess.Popen(["git", "push",
+        "-u", "origin", "main"])
