@@ -4,7 +4,7 @@ import sys
 if sys.argv[1] == "--commit":
     print("committing...")
     subprocess.Popen(["git", "commit", 
-        "-am", "automated3"])
+        "-am", "automated4"])
 if sys.argv[1] == "--clone-bare":
     print("Clone an existing repository into a bare repository")
     subprocess.Popen(["git", "clone",
@@ -23,3 +23,8 @@ if sys.argv[1] == "--push-origin":
     print("git push -u origin main")
     subprocess.Popen(["git", "push",
         "-u", "origin", "main"])
+if sys.argv[1] == "clone-bare":
+    print("cloning the bare repo into a regurlar repo")
+    subprocess.Popen(["git", "clone",
+        "/Users/seanusick/fd-git-backup/am-app.git",
+        "am-app"])
