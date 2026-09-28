@@ -4,7 +4,7 @@ import sys
 if sys.argv[1] == "--commit":
     print("committing...")
     subprocess.Popen(["git", "commit", 
-        "-am", "automated6"])
+        "-am", "automated7"])
 if sys.argv[1] == "--clone-bare":
     print("Clone an existing repository into a bare repository")
     subprocess.Popen(["git", "clone",
@@ -28,6 +28,9 @@ if sys.argv[1] == "--clone-bare":
     subprocess.Popen(["git", "clone",
         "/Users/seanusick/fd-git-backup/am-app.git",
         "am-app"])
+if sys.argv[1] == "--git-pull":
+    print("pull changes into flash drive")
+    subprocess.Popen(["git", "pull"])
 
 # cd /Volumes/DISK_IMG/git-fd-backup/
 # python /Users/seanusick/p/am-app/backup-script.py --clone-bare
