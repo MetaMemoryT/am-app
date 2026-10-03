@@ -6,7 +6,7 @@ import sys
 if sys.argv[1] == "--commit":
     print("committing...")
     subprocess.Popen(["git", "commit", 
-        "-am", "automated12"])
+        "-am", "automated13"])
 if sys.argv[1] == "--clone-bare":
     print("Clone an existing repository into a bare repository")
     subprocess.Popen(["git", "clone",
@@ -40,6 +40,19 @@ if sys.argv[1] == "--clone-bare-regular":
 if sys.argv[1] == "--git-pull":
     print("pull changes into flash drive")
     subprocess.Popen(["git", "pull"])
+
+# cd /Volumes/DISK_IMG/git-fd-backup/am-app
+# python /Users/seanusick/p/am-app/backup-script.py --git-rebase
+if sys.argv[1] == "--git-rebase":
+    print("rebase changes into flash drive")
+    subprocess.Popen(["git", "config", "pull.rebase", "false"])
+
+# cd /Volumes/DISK_IMG/git-fd-backup/am-app
+# python /Users/seanusick/p/am-app/backup-script.py --switch-main
+if sys.argv[1] == "--switch-main":
+    print("git branch -M main")
+    print("switch to the main branch")
+    subprocess.Popen(["git", "switch", "main"])
 
 # cd /Volumes/DISK_IMG/git-fd-backup/
 # python /Users/seanusick/p/am-app/backup-script.py --clone-bare
