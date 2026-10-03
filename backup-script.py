@@ -6,7 +6,7 @@ import sys
 if sys.argv[1] == "--commit":
     print("committing...")
     subprocess.Popen(["git", "commit", 
-        "-am", "automated14"])
+        "-am", "automated15"])
 if sys.argv[1] == "--clone-bare":
     print("Clone an existing repository into a bare repository")
     subprocess.Popen(["git", "clone",
@@ -59,15 +59,15 @@ if sys.argv[1] == "--switch-main":
 
 ### On windows computer
 # cd ~
-# python /D/git-fd-backup/am-app/backup-script.py --clone-bare2
+# python /d/git-fd-backup/am-app/backup-script.py --clone-bare2
 if sys.argv[1] == "--clone-bare2":
     print("Clone the existing repository on the flash drive into a bare repository2")
     subprocess.Popen(["git", "clone",
-        "--bare", "/D/git-fd-backup/am-app",
+        "--bare", "/d/git-fd-backup/am-app",
         "/c/Users/seand/git-fd-backup/am-app.git"])
 
 # cd ~/p
-# python /D/git-fd-backup/am-app/backup-script.py --clone-bare-regular
+# python /d/git-fd-backup/am-app/backup-script.py --clone-bare-regular
 if sys.argv[1] == "--clone-bare-regular":
     print("cloning the bare repo into a regurlar repo")
     subprocess.Popen(["git", "clone",
