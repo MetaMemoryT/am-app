@@ -2,11 +2,11 @@ import subprocess
 import sys
 
 # cd ~/p/am-app
-# python /Users/seanusick/p/am-app/backup-script.py --commit
+# python backup-script.py --commit
 if sys.argv[1] == "--commit":
     print("committing...")
     subprocess.Popen(["git", "commit", 
-        "-am", "automated10"])
+        "-am", "automated11"])
 if sys.argv[1] == "--clone-bare":
     print("Clone an existing repository into a bare repository")
     subprocess.Popen(["git", "clone",
@@ -23,6 +23,7 @@ if sys.argv[1] == "--remote-add":
         "/Users/seanusick/fd-git-backup/am-app.git"])
 
 # cd ~/p/am-app
+# python backup-script.py --push-origin
 if sys.argv[1] == "--push-origin":
     print("git push -u origin main")
     subprocess.Popen(["git", "push",
