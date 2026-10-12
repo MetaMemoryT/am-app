@@ -11,8 +11,8 @@ def commit():
     print("changing dir to ~/p/am-app...")
     os.chdir("/Users/seanusick/p/am-app")
     print("committing...")
-    subprocess.Popen(["git", "commit", 
-        "-am", "automated22"])
+    subprocess.run(["git", "commit", 
+        "-am", "automated23"])
 
 # python /Users/seanusick/p/am-app/backup-script.py --commit
 if sys.argv[1] == "--commit":
@@ -20,18 +20,18 @@ if sys.argv[1] == "--commit":
 
 if sys.argv[1] == "--clone-bare":
     print("Clone an existing repository into a bare repository")
-    subprocess.Popen(["git", "clone",
+    subprocess.run(["git", "clone",
         "--bare", "/Users/seanusick/p/am-app",
         "/Users/seanusick/fd-git-backup/am-app.git"])
 if sys.argv[1] == "--branch":
     print("git branch -M main")
-    subprocess.Popen(["git", "branch",
+    subprocess.run(["git", "branch",
         "-M", "main"])
 if sys.argv[1] == "--remote-add":
     print("changing dir to ~/p/am-app...")
     os.chdir("/Users/seanusick/p/am-app")
     print("git remote add origin")
-    subprocess.Popen(["git", "remote",
+    subprocess.run(["git", "remote",
         "add", "origin",
         "/Users/seanusick/fd-git-backup/am-app.git"])
 
@@ -39,7 +39,7 @@ def push_origin():
     print("changing dir to ~/p/am-app...")
     os.chdir("/Users/seanusick/p/am-app")
     print("git push -u origin main")
-    subprocess.Popen(["git", "push",
+    subprocess.run(["git", "push",
         "-u", "origin", "main"])
 
 # cd ~/p
@@ -49,7 +49,7 @@ if sys.argv[1] == "--push-origin":
 
 if sys.argv[1] == "--clone-bare-regular":
     print("cloning the bare repo into a regurlar repo")
-    subprocess.Popen(["git", "clone",
+    subprocess.run(["git", "clone",
         "/Users/seanusick/fd-git-backup/am-app.git",
         "am-app"])
 
@@ -57,7 +57,7 @@ def git_pull():
     print("changing dir to  /Volumes/DISK_IMG/git-fd-backup/am-app...")
     os.chdir("/Volumes/DISK_IMG/git-fd-backup/am-app")
     print("pull changes into flash drive...")
-    subprocess.Popen(["git", "pull"])
+    subprocess.run(["git", "pull"])
 
 # python /Users/seanusick/p/am-app/backup-script.py --git-pull
 if sys.argv[1] == "--git-pull":
@@ -67,19 +67,19 @@ if sys.argv[1] == "--git-pull":
 # python /Users/seanusick/p/am-app/backup-script.py --git-rebase
 if sys.argv[1] == "--git-rebase":
     print("rebase changes into flash drive")
-    subprocess.Popen(["git", "config", "pull.rebase", "false"])
+    subprocess.run(["git", "config", "pull.rebase", "false"])
 
 # cd /Volumes/DISK_IMG/git-fd-backup/am-app
 # python /Users/seanusick/p/am-app/backup-script.py --switch-main
 if sys.argv[1] == "--switch-main":
     print("git branch -M main")
     print("switch to the main branch")
-    subprocess.Popen(["git", "switch", "main"])
+    subprocess.run(["git", "switch", "main"])
 
 # cd /Volumes/DISK_IMG/git-fd-backup/
 # python /Users/seanusick/p/am-app/backup-script.py --clone-bare
 
-# python /Users/seanusick/p/am-app/backup-script.py --commit-push-origin-pull-mac
+# python3 /Users/seanusick/p/am-app/backup-script.py --commit-push-origin-pull-mac
 if sys.argv[1] == "--commit-push-origin-pull-mac":
     print("commiting...")
     commit()
@@ -93,7 +93,7 @@ if sys.argv[1] == "--commit-push-origin-pull-mac":
 # python /d/git-fd-backup/am-app/backup-script.py --clone-bare2
 if sys.argv[1] == "--clone-bare2":
     print("Clone the existing repository on the flash drive into a bare repository2")
-    subprocess.Popen(["git", "clone",
+    subprocess.run(["git", "clone",
         "--bare", "D:\\git-fd-backup\\am-app",
         "C:\\Users\\seand\\git-fd-backup\\am-app.git"])
 
@@ -101,7 +101,7 @@ if sys.argv[1] == "--clone-bare2":
 # python /d/git-fd-backup/am-app/backup-script.py --clone-bare-regular
 if sys.argv[1] == "--clone-bare-regular":
     print("cloning the bare repo into a regurlar repo")
-    subprocess.Popen(["git", "clone",
+    subprocess.run(["git", "clone",
         "C:\\Users\\seand\\git-fd-backup\\am-app.git",
         "am-app"])
 
@@ -111,7 +111,7 @@ if sys.argv[1] == "--remote-add-windows":
     os.chdir("D:\\git-fd-backup\\am-app")
     print("remote adding origin on windows")
     print("git remote add origin")
-    subprocess.Popen(["git", "remote",
+    subprocess.run(["git", "remote",
         "add", "origin",
         "C:\\Users\\seand\\git-fd-backup\\am-app.git"])
 
@@ -120,7 +120,7 @@ if sys.argv[1] == "--push-origin-windows":
     print("changing dir to D:\\git-fd-backup\\am-app...")
     os.chdir("D:\\git-fd-backup\\am-app")
     print("git push -u origin main")
-    subprocess.Popen(["git", "push",
+    subprocess.run(["git", "push",
         "-u", "origin", "main"])
 
 # python /d/git-fd-backup/am-app/backup-script.py --remate-add-windows-2
@@ -128,7 +128,7 @@ if sys.argv[1] == "--remote-add-windows-2":
     print("changing dir to C:\\Users\\seand\\p\\am-app...")
     os.chdir("C:\\Users\\seand\\p\\am-app...")
     print("git remote add origin")
-    subprocess.Popen(["git", "remote",
+    subprocess.run(["git", "remote",
         "add", "origin",
         "C:\\Users\\seand\\git-fd-backup\\am-app.git"])
 
@@ -137,4 +137,4 @@ if sys.argv[1] == "--git-pull-windows":
     print("changing dir to C:\\Users\\seand\\p\\am-app...")
     os.chdir("C:\\Users\\seand\\p\\am-app")
     print("pull changes into windows computer working repo...")
-    subprocess.Popen(["git", "pull"])
+    subprocess.run(["git", "pull"])
