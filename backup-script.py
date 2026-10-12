@@ -8,13 +8,13 @@ import os
 # I am sticking with bare repositories for now.
 
 # cd ~/p
-# python backup-script.py --commit
+# python /Users/seanusick/p/am-app/backup-script.py --commit
 if sys.argv[1] == "--commit":
     print("changing dir to ~/p/am-app...")
     os.chdir("/Users/seanusick/p/am-app")
     print("committing...")
     subprocess.Popen(["git", "commit", 
-        "-am", "automated18"])
+        "-am", "automated19"])
 if sys.argv[1] == "--clone-bare":
     print("Clone an existing repository into a bare repository")
     subprocess.Popen(["git", "clone",
@@ -30,9 +30,11 @@ if sys.argv[1] == "--remote-add":
         "add", "origin",
         "/Users/seanusick/fd-git-backup/am-app.git"])
 
-# cd ~/p/am-app
-# python backup-script.py --push-origin
+# cd ~/p
+# python /Users/seanusick/p/am-app/backup-script.py --push-origin
 if sys.argv[1] == "--push-origin":
+    print("changing dir to ~/p/am-app...")
+    os.chdir("/Users/seanusick/p/am-app")
     print("git push -u origin main")
     subprocess.Popen(["git", "push",
         "-u", "origin", "main"])
