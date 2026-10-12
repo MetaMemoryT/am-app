@@ -14,7 +14,7 @@ if sys.argv[1] == "--commit":
     os.chdir("/Users/seanusick/p/am-app")
     print("committing...")
     subprocess.Popen(["git", "commit", 
-        "-am", "automated19"])
+        "-am", "automated20"])
 if sys.argv[1] == "--clone-bare":
     print("Clone an existing repository into a bare repository")
     subprocess.Popen(["git", "clone",
@@ -45,10 +45,11 @@ if sys.argv[1] == "--clone-bare-regular":
         "/Users/seanusick/fd-git-backup/am-app.git",
         "am-app"])
 
-# cd /Volumes/DISK_IMG/git-fd-backup/am-app
 # python /Users/seanusick/p/am-app/backup-script.py --git-pull
 if sys.argv[1] == "--git-pull":
-    print("pull changes into flash drive")
+    print("changing dir to  /Volumes/DISK_IMG/git-fd-backup/am-app...")
+    os.chdir("/Volumes/DISK_IMG/git-fd-backup/am-app")
+    print("pull changes into flash drive...")
     subprocess.Popen(["git", "pull"])
 
 # cd /Volumes/DISK_IMG/git-fd-backup/am-app
