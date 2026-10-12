@@ -1,12 +1,15 @@
 import subprocess
 import sys
+import os
 
-# cd ~/p/am-app
+# cd ~/p
 # python backup-script.py --commit
 if sys.argv[1] == "--commit":
+    print("changing dir to ~/p/am-app...")
+    os.chdir("/Users/seanusick/p/am-app")
     print("committing...")
     subprocess.Popen(["git", "commit", 
-        "-am", "automated16"])
+        "-am", "automated17"])
 if sys.argv[1] == "--clone-bare":
     print("Clone an existing repository into a bare repository")
     subprocess.Popen(["git", "clone",
