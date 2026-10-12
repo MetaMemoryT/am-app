@@ -7,14 +7,26 @@ import os
 # this script could use bare repositories or a non-checked-out branch.
 # I am sticking with bare repositories for now.
 
-# cd ~/p
+# python /Users/seanusick/p/am-app/backup-script.py --commit-push-origin-pull-mac
+if sys.argv[1] == "--commit-push-origin-pull-mac":
+    print("commiting...")
+    subprocess.Popen(["python", "/Users/seanusick/p/am-app/backup-script.py", 
+        "--commit"])
+    print("pushing origin...")
+    subprocess.Popen(["python", "/Users/seanusick/p/am-app/backup-script.py", 
+        "--push-origin"])
+    print("pulling...")
+    subprocess.Popen(["python", "/Users/seanusick/p/am-app/backup-script.py", 
+        "--git-pull"])
+    
+
 # python /Users/seanusick/p/am-app/backup-script.py --commit
 if sys.argv[1] == "--commit":
     print("changing dir to ~/p/am-app...")
     os.chdir("/Users/seanusick/p/am-app")
     print("committing...")
     subprocess.Popen(["git", "commit", 
-        "-am", "automated20"])
+        "-am", "automated21"])
 if sys.argv[1] == "--clone-bare":
     print("Clone an existing repository into a bare repository")
     subprocess.Popen(["git", "clone",
@@ -25,6 +37,8 @@ if sys.argv[1] == "--branch":
     subprocess.Popen(["git", "branch",
         "-M", "main"])
 if sys.argv[1] == "--remote-add":
+    print("changing dir to ~/p/am-app...")
+    os.chdir("/Users/seanusick/p/am-app")
     print("git remote add origin")
     subprocess.Popen(["git", "remote",
         "add", "origin",
@@ -84,3 +98,37 @@ if sys.argv[1] == "--clone-bare-regular":
     subprocess.Popen(["git", "clone",
         "C:\\Users\\seand\\git-fd-backup\\am-app.git",
         "am-app"])
+
+# python /d/git-fd-backup/am-app/backup-script.py --remote-add-windows
+if sys.argv[1] == "--remote-add-windows":
+    print("changing dir to D:\\git-fd-backup\\am-app...")
+    os.chdir("D:\\git-fd-backup\\am-app")
+    print("remote adding origin on windows")
+    print("git remote add origin")
+    subprocess.Popen(["git", "remote",
+        "add", "origin",
+        "C:\\Users\\seand\\git-fd-backup\\am-app.git"])
+
+# python /d/git-fd-backup/am-app/backup-script.py --push-origin
+if sys.argv[1] == "--push-origin-windows":
+    print("changing dir to D:\\git-fd-backup\\am-app...")
+    os.chdir("D:\\git-fd-backup\\am-app")
+    print("git push -u origin main")
+    subprocess.Popen(["git", "push",
+        "-u", "origin", "main"])
+
+# python /d/git-fd-backup/am-app/backup-script.py --remate-add-windows-2
+if sys.argv[1] == "--remote-add-windows-2":
+    print("changing dir to C:\\Users\\seand\\p\\am-app...")
+    os.chdir("C:\\Users\\seand\\p\\am-app...")
+    print("git remote add origin")
+    subprocess.Popen(["git", "remote",
+        "add", "origin",
+        "C:\\Users\\seand\\git-fd-backup\\am-app.git"])
+
+# python /d/git-fd-backup/am-app/backup-script.py --git-pull-windows
+if sys.argv[1] == "--git-pull-windows":
+    print("changing dir to C:\\Users\\seand\\p\\am-app...")
+    os.chdir("C:\\Users\\seand\\p\\am-app")
+    print("pull changes into windows computer working repo...")
+    subprocess.Popen(["git", "pull"])
