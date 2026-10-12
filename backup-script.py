@@ -2,6 +2,11 @@ import subprocess
 import sys
 import os
 
+
+#  The Golden Rule: Push to a Bare Repository or a Non-Checked-Out Branch
+# this script could use bare repositories or a non-checked-out branch.
+# I am sticking with bare repositories for now.
+
 # cd ~/p
 # python backup-script.py --commit
 if sys.argv[1] == "--commit":
@@ -9,7 +14,7 @@ if sys.argv[1] == "--commit":
     os.chdir("/Users/seanusick/p/am-app")
     print("committing...")
     subprocess.Popen(["git", "commit", 
-        "-am", "automated17"])
+        "-am", "automated18"])
 if sys.argv[1] == "--clone-bare":
     print("Clone an existing repository into a bare repository")
     subprocess.Popen(["git", "clone",
