@@ -12,7 +12,7 @@ def commit():
     os.chdir("/Users/seanusick/p/am-app")
     print("committing...")
     subprocess.run(["git", "commit", 
-        "-am", "automated23"])
+        "-am", "automated24"])
 
 # python /Users/seanusick/p/am-app/backup-script.py --commit
 if sys.argv[1] == "--commit":
@@ -105,14 +105,14 @@ if sys.argv[1] == "--clone-bare-regular":
         "C:\\Users\\seand\\git-fd-backup\\am-app.git",
         "am-app"])
 
-# python /d/git-fd-backup/am-app/backup-script.py --remote-add-windows
-if sys.argv[1] == "--remote-add-windows":
+# python /d/git-fd-backup/am-app/backup-script.py --remote-set-url
+if sys.argv[1] == "--remote-set-url":
     print("changing dir to D:\\git-fd-backup\\am-app...")
     os.chdir("D:\\git-fd-backup\\am-app")
     print("remote adding origin on windows")
     print("git remote add origin")
     subprocess.run(["git", "remote",
-        "add", "origin",
+        "set-url", "origin",
         "C:\\Users\\seand\\git-fd-backup\\am-app.git"])
 
 # python /d/git-fd-backup/am-app/backup-script.py --push-origin
