@@ -7,26 +7,17 @@ import os
 # this script could use bare repositories or a non-checked-out branch.
 # I am sticking with bare repositories for now.
 
-# python /Users/seanusick/p/am-app/backup-script.py --commit-push-origin-pull-mac
-if sys.argv[1] == "--commit-push-origin-pull-mac":
-    print("commiting...")
-    subprocess.Popen(["python", "/Users/seanusick/p/am-app/backup-script.py", 
-        "--commit"])
-    print("pushing origin...")
-    subprocess.Popen(["python", "/Users/seanusick/p/am-app/backup-script.py", 
-        "--push-origin"])
-    print("pulling...")
-    subprocess.Popen(["python", "/Users/seanusick/p/am-app/backup-script.py", 
-        "--git-pull"])
-    
-
-# python /Users/seanusick/p/am-app/backup-script.py --commit
-if sys.argv[1] == "--commit":
+def commit():
     print("changing dir to ~/p/am-app...")
     os.chdir("/Users/seanusick/p/am-app")
     print("committing...")
     subprocess.Popen(["git", "commit", 
-        "-am", "automated21"])
+        "-am", "automated22"])
+
+# python /Users/seanusick/p/am-app/backup-script.py --commit
+if sys.argv[1] == "--commit":
+    commit()
+
 if sys.argv[1] == "--clone-bare":
     print("Clone an existing repository into a bare repository")
     subprocess.Popen(["git", "clone",
@@ -44,14 +35,18 @@ if sys.argv[1] == "--remote-add":
         "add", "origin",
         "/Users/seanusick/fd-git-backup/am-app.git"])
 
-# cd ~/p
-# python /Users/seanusick/p/am-app/backup-script.py --push-origin
-if sys.argv[1] == "--push-origin":
+
+def push_origin():
     print("changing dir to ~/p/am-app...")
     os.chdir("/Users/seanusick/p/am-app")
     print("git push -u origin main")
     subprocess.Popen(["git", "push",
         "-u", "origin", "main"])
+
+# cd ~/p
+# python /Users/seanusick/p/am-app/backup-script.py --push-origin
+if sys.argv[1] == "--push-origin":
+    push_origin()
 
 if sys.argv[1] == "--clone-bare-regular":
     print("cloning the bare repo into a regurlar repo")
@@ -59,12 +54,15 @@ if sys.argv[1] == "--clone-bare-regular":
         "/Users/seanusick/fd-git-backup/am-app.git",
         "am-app"])
 
-# python /Users/seanusick/p/am-app/backup-script.py --git-pull
-if sys.argv[1] == "--git-pull":
+def git_pull():
     print("changing dir to  /Volumes/DISK_IMG/git-fd-backup/am-app...")
     os.chdir("/Volumes/DISK_IMG/git-fd-backup/am-app")
     print("pull changes into flash drive...")
     subprocess.Popen(["git", "pull"])
+
+# python /Users/seanusick/p/am-app/backup-script.py --git-pull
+if sys.argv[1] == "--git-pull":
+    git_pull()
 
 # cd /Volumes/DISK_IMG/git-fd-backup/am-app
 # python /Users/seanusick/p/am-app/backup-script.py --git-rebase
@@ -81,6 +79,15 @@ if sys.argv[1] == "--switch-main":
 
 # cd /Volumes/DISK_IMG/git-fd-backup/
 # python /Users/seanusick/p/am-app/backup-script.py --clone-bare
+
+# python /Users/seanusick/p/am-app/backup-script.py --commit-push-origin-pull-mac
+if sys.argv[1] == "--commit-push-origin-pull-mac":
+    print("commiting...")
+    commit()
+    print("pushing origin...")
+    push_origin()
+    print("pulling...")
+    git_pull()
 
 ### On windows computer
 # cd ~
