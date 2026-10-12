@@ -35,7 +35,6 @@ if sys.argv[1] == "--remote-add":
         "add", "origin",
         "/Users/seanusick/fd-git-backup/am-app.git"])
 
-
 def push_origin():
     print("changing dir to ~/p/am-app...")
     os.chdir("/Users/seanusick/p/am-app")
