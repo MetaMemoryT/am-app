@@ -8,14 +8,14 @@ import os
 # I am sticking with bare repositories for now.
 
 # TODO pathname compression
-# TODO mac-to-fd remote-set-url
+# DONE mac-to-fd remote-set-url
 
 def commit():
     print("changing dir to ~/p/am-app...")
     os.chdir("/Users/seanusick/p/am-app")
     print("committing...")
     subprocess.run(["git", "commit", 
-        "-am", "automated24"])
+        "-am", "automated25"])
 
 # python /Users/seanusick/p/am-app/backup-script.py --commit
 if sys.argv[1] == "--commit":
