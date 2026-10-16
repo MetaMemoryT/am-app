@@ -7,6 +7,9 @@ import os
 # this script could use bare repositories or a non-checked-out branch.
 # I am sticking with bare repositories for now.
 
+# TODO pathname compression
+# TODO mac-to-fd remote-set-url
+
 def commit():
     print("changing dir to ~/p/am-app...")
     os.chdir("/Users/seanusick/p/am-app")
@@ -79,12 +82,25 @@ if sys.argv[1] == "--switch-main":
 # cd /Volumes/DISK_IMG/git-fd-backup/
 # python /Users/seanusick/p/am-app/backup-script.py --clone-bare
 
-# python3 /Users/seanusick/p/am-app/backup-script.py --commit-push-origin-pull-mac
-if sys.argv[1] == "--commit-push-origin-pull-mac":
+def set_url_mac():
+    print("changing dir to /Volumes/DISK_IMG/git-fd-backup/am-app...")
+    os.chdir("/Volumes/DISK_IMG/git-fd-backup/am-app")
+    print("remote set-url on mac")
+    subprocess.run(["git", "remote",
+        "set-url", "origin",
+        "/Users/seanusick/fd-git-backup/am-app.git"])
+
+if sys.argv[1] == "--remote-set-url-mac":
+    set_url_mac()
+
+# python3 /Users/seanusick/p/am-app/backup-script.py --mac-to-fd
+if sys.argv[1] == "--mac-to-fd":
     print("commiting...")
     commit()
     print("pushing origin...")
     push_origin()
+    print("set-url")
+    set_url_mac()
     print("pulling...")
     git_pull()
 
@@ -109,8 +125,7 @@ if sys.argv[1] == "--clone-bare-regular":
 if sys.argv[1] == "--remote-set-url":
     print("changing dir to D:\\git-fd-backup\\am-app...")
     os.chdir("D:\\git-fd-backup\\am-app")
-    print("remote adding origin on windows")
-    print("git remote add origin")
+    print("remote set-url on windows")
     subprocess.run(["git", "remote",
         "set-url", "origin",
         "C:\\Users\\seand\\git-fd-backup\\am-app.git"])
