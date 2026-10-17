@@ -59,7 +59,13 @@
 / .gitignore
 / git
 / run-instructions.txt
-backup-instructions.txt
+/ backup-instructions.txt
+/ mac-to-fd remote-set-url
+fd-to-win
+win-to-fd
+pathname compression
+
+
 backup-script.py
 
 An error appeared in vs code on Mon, Sep 14, 2026

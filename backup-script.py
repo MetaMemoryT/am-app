@@ -7,15 +7,12 @@ import os
 # this script could use bare repositories or a non-checked-out branch.
 # I am sticking with bare repositories for now.
 
-# TODO pathname compression
-# DONE mac-to-fd remote-set-url
-
 def commit():
     print("changing dir to ~/p/am-app...")
     os.chdir("/Users/seanusick/p/am-app")
     print("committing...")
     subprocess.run(["git", "commit", 
-        "-am", "automated25"])
+        "-am", "automated26"])
 
 # python /Users/seanusick/p/am-app/backup-script.py --commit
 if sys.argv[1] == "--commit":
@@ -121,8 +118,7 @@ if sys.argv[1] == "--clone-bare-regular":
         "C:\\Users\\seand\\git-fd-backup\\am-app.git",
         "am-app"])
 
-# python /d/git-fd-backup/am-app/backup-script.py --remote-set-url
-if sys.argv[1] == "--remote-set-url":
+def set_url_win():
     print("changing dir to D:\\git-fd-backup\\am-app...")
     os.chdir("D:\\git-fd-backup\\am-app")
     print("remote set-url on windows")
@@ -130,13 +126,20 @@ if sys.argv[1] == "--remote-set-url":
         "set-url", "origin",
         "C:\\Users\\seand\\git-fd-backup\\am-app.git"])
 
-# python /d/git-fd-backup/am-app/backup-script.py --push-origin
-if sys.argv[1] == "--push-origin-windows":
+# python /d/git-fd-backup/am-app/backup-script.py --remote-set-url
+if sys.argv[1] == "--remote-set-url":
+    set_url_win()
+
+def push_origin_win():
     print("changing dir to D:\\git-fd-backup\\am-app...")
     os.chdir("D:\\git-fd-backup\\am-app")
     print("git push -u origin main")
     subprocess.run(["git", "push",
         "-u", "origin", "main"])
+
+# python /d/git-fd-backup/am-app/backup-script.py --push-origin
+if sys.argv[1] == "--push-origin-windows":
+    push_origin_win()
 
 # python /d/git-fd-backup/am-app/backup-script.py --remate-add-windows-2
 if sys.argv[1] == "--remote-add-windows-2":
@@ -147,9 +150,21 @@ if sys.argv[1] == "--remote-add-windows-2":
         "add", "origin",
         "C:\\Users\\seand\\git-fd-backup\\am-app.git"])
 
-# python /d/git-fd-backup/am-app/backup-script.py --git-pull-windows
-if sys.argv[1] == "--git-pull-windows":
+def git_pull_win():
     print("changing dir to C:\\Users\\seand\\p\\am-app...")
     os.chdir("C:\\Users\\seand\\p\\am-app")
     print("pull changes into windows computer working repo...")
     subprocess.run(["git", "pull"])
+
+# python /d/git-fd-backup/am-app/backup-script.py --git-pull-windows
+if sys.argv[1] == "--git-pull-windows":
+    git_pull_win()
+
+# python /d/git-fd-backup/am-app/backup-script.py --fd-to-win
+if sys.argv[1] == "--fd-to-win":
+    print("set-url")
+    set_url_win()
+    print("push origin fd to bare")
+    push_origin_win()
+    print("pulling...")
+    git_pull_win()
