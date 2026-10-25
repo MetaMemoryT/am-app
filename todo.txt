@@ -62,6 +62,10 @@
 / backup-instructions.txt
 / mac-to-fd remote-set-url
 / fd-to-win
+
+make a change and commit on the fd
+--fd-to-mac
+
 win-to-fd
 
 pathname compression

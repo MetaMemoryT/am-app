@@ -7,12 +7,13 @@ import os
 # this script could use bare repositories or a non-checked-out branch.
 # I am sticking with bare repositories for now.
 
+### On mac computer
 def commit():
     print("changing dir to ~/p/am-app...")
     os.chdir("/Users/seanusick/p/am-app")
     print("committing...")
     subprocess.run(["git", "commit", 
-        "-am", "automated27"])
+        "-am", "automated28"])
 
 # python /Users/seanusick/p/am-app/backup-script.py --commit
 if sys.argv[1] == "--commit":
@@ -101,7 +102,31 @@ if sys.argv[1] == "--mac-to-fd":
     print("pulling...")
     git_pull()
 
+def push_origin_fd():
+    print("changing dir to /Volumes/DISK_IMG/git-fd-backup/am-app...")
+    os.chdir("/Volumes/DISK_IMG/git-fd-backup/am-app")
+    print("git push -u origin main")
+    subprocess.run(["git", "push",
+        "-u", "origin", "main"])
+
+## commit_on_fd
+def commit_on_fd():
+    print("changing dir to /Volumes/DISK_IMG/git-fd-backup/am-app...")
+    os.chdir("/Volumes/DISK_IMG/git-fd-backup/am-app")
+    print("committing...")
+    subprocess.run(["git", "commit", 
+        "-am", "automated28"])
+
 # python3 /Users/seanusick/p/am-app/backup-script.py --fd-to-mac
+if sys.argv[1] == "--fd-to-mac":
+    print("commiting...")
+    commit_on_fd()
+    print("set-url")
+    set_url_mac()
+    print("pushing origin from fd...")
+    push_origin_fd()
+    print("pulling...")
+    git_pull()    
 
 ### On windows computer
 # cd ~
