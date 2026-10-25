@@ -115,7 +115,7 @@ def commit_on_fd():
     os.chdir("/Volumes/DISK_IMG/git-fd-backup/am-app")
     print("committing...")
     subprocess.run(["git", "commit", 
-        "-am", "automated28"])
+        "-am", "automated29"])
 
 # python3 /Users/seanusick/p/am-app/backup-script.py --fd-to-mac
 if sys.argv[1] == "--fd-to-mac":
