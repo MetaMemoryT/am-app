@@ -12,7 +12,7 @@ def commit():
     os.chdir("/Users/seanusick/p/am-app")
     print("committing...")
     subprocess.run(["git", "commit", 
-        "-am", "automated26"])
+        "-am", "automated27"])
 
 # python /Users/seanusick/p/am-app/backup-script.py --commit
 if sys.argv[1] == "--commit":
@@ -101,6 +101,8 @@ if sys.argv[1] == "--mac-to-fd":
     print("pulling...")
     git_pull()
 
+# python3 /Users/seanusick/p/am-app/backup-script.py --fd-to-mac
+
 ### On windows computer
 # cd ~
 # python /d/git-fd-backup/am-app/backup-script.py --clone-bare2
@@ -167,4 +169,41 @@ if sys.argv[1] == "--fd-to-win":
     print("push origin fd to bare")
     push_origin_win()
     print("pulling...")
+    git_pull_win()
+
+def push_origin_win_bare():
+    print("changing dir to C:\\Users\\seand\\p\\am-app...")
+    os.chdir("C:\\Users\\seand\\p\\am-app")
+    print("git push -u origin main")
+    subprocess.run(["git", "push",
+        "-u", "origin", "main"])
+
+def git_pull_win_fd():
+    print("changing dir to C:\\Users\\seand\\p\\am-app...")
+    os.chdir("C:\\Users\\seand\\p\\am-app")
+    print("pull changes into windows computer working repo...")
+    subprocess.run(["git", "pull"])
+
+def commit_win():
+    print("changing dir to C:\\Users\\seand\\p\\am-app...")
+    os.chdir("C:\\Users\\seand\\p\\am-app")
+    print("committing...")
+    subprocess.run(["git", "commit", 
+        "-am", "automated28"])
+
+def git_pull_win():
+    print("changing dir to D:\\git-fd-backup\\am-app...")
+    os.chdir("D:\\git-fd-backup\\am-app")
+    print("pull changes into flash drive...")
+    subprocess.run(["git", "pull"])
+
+# python /d/git-fd-backup/am-app/backup-script.py --win-to-fd
+if sys.argv[1] == "--win-to-fd":
+    print("commiting...")
+    commit_win()
+    print("pushing origin...")
+    push_origin_win_bare()
+    print("set-url win")
+    set_url_win()
+    print("pull on to the flash drive")
     git_pull_win()

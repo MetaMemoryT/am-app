@@ -61,8 +61,9 @@
 / run-instructions.txt
 / backup-instructions.txt
 / mac-to-fd remote-set-url
-fd-to-win
+/ fd-to-win
 win-to-fd
+
 pathname compression
 
 
