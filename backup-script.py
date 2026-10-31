@@ -13,7 +13,7 @@ def commit():
     os.chdir("/Users/seanusick/p/am-app")
     print("committing...")
     subprocess.run(["git", "commit", 
-        "-am", "automated28"])
+        "-am", "automated29 backup-script-temp problem"])
 
 # python /Users/seanusick/p/am-app/backup-script.py --commit
 if sys.argv[1] == "--commit":
@@ -117,6 +117,18 @@ def commit_on_fd():
     subprocess.run(["git", "commit", 
         "-am", "automated29"])
 
+def git_pull_mac_p_folder():
+    print("changing dir to  ~/p/am-app...")
+    os.chdir("/Users/seanusick/p/am-app")
+    print("pull changes into p folder...")
+    subprocess.run(["git", "pull"])
+
+# python3 /Users/seanusick/p/am-app/backup-script.py --fd-to-mac-partial
+if sys.argv[1] == "--fd-to-mac-partial":
+    print("pulling")
+    git_pull_mac_p_folder()
+
+
 # python3 /Users/seanusick/p/am-app/backup-script.py --fd-to-mac
 if sys.argv[1] == "--fd-to-mac":
     print("commiting...")
@@ -126,7 +138,7 @@ if sys.argv[1] == "--fd-to-mac":
     print("pushing origin from fd...")
     push_origin_fd()
     print("pulling...")
-    git_pull()    
+    git_pull_mac_p_folder()    
 
 ### On windows computer
 # cd ~
