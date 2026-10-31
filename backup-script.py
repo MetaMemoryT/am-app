@@ -234,7 +234,7 @@ def commit_win():
     os.chdir("C:\\Users\\seand\\p\\am-app")
     print("committing...")
     subprocess.run(["git", "commit", 
-        "-am", "automated34"])
+        "-am", "automated35"])
 
 def git_pull_win():
     print("changing dir to D:\\git-fd-backup\\am-app...")
