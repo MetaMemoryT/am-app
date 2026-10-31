@@ -13,7 +13,7 @@ def commit():
     os.chdir("/Users/seanusick/p/am-app")
     print("committing...")
     subprocess.run(["git", "commit", 
-        "-am", "automated29 backup-script-temp problem"])
+        "-am", "automated32"])
 
 # python /Users/seanusick/p/am-app/backup-script.py --commit
 if sys.argv[1] == "--commit":
@@ -128,6 +128,14 @@ if sys.argv[1] == "--fd-to-mac-partial":
     print("pulling")
     git_pull_mac_p_folder()
 
+# python3 /Users/seanusick/p/am-app/backup-script.py --fd-to-mac-no-commit
+if sys.argv[1] == "--fd-to-mac-no-commit":
+    print("set-url")
+    set_url_mac()
+    print("pushing origin from fd...")
+    push_origin_fd()
+    print("pulling...")
+    git_pull_mac_p_folder()   
 
 # python3 /Users/seanusick/p/am-app/backup-script.py --fd-to-mac
 if sys.argv[1] == "--fd-to-mac":
