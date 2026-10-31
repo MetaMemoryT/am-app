@@ -115,7 +115,7 @@ def commit_on_fd():
     os.chdir("/Volumes/DISK_IMG/git-fd-backup/am-app")
     print("committing...")
     subprocess.run(["git", "commit", 
-        "-am", "automated29"])
+        "-am", "automated30"])
 
 def git_pull_mac_p_folder():
     print("changing dir to  ~/p/am-app...")
