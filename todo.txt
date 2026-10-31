@@ -63,20 +63,21 @@
 / mac-to-fd remote-set-url
 / fd-to-win
 
-make a change and commit on the fd
---fd-to-mac
-
-win-to-fd
+/ make a change and commit on the fd
+/ --fd-to-mac
+/ --fd-to-mac-no-commit
+/ --win-to-fd
+/ --fd-to-win
+get am-app running on windows
 
 pathname compression
-
 
 backup-script.py
 
 An error appeared in vs code on Mon, Sep 14, 2026
 #include errors detected. Please update your includePath. Squiggles are disabled for this translation unit 
 
-get am-app running on windows
+
 hotswap
 hotswap tests
 
