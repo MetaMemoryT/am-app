@@ -13,7 +13,7 @@ def commit():
     os.chdir("/Users/seanusick/p/am-app")
     print("committing...")
     subprocess.run(["git", "commit", 
-        "-am", "automated32"])
+        "-am", "automated33"])
 
 # python /Users/seanusick/p/am-app/backup-script.py --commit
 if sys.argv[1] == "--commit":
@@ -234,7 +234,7 @@ def commit_win():
     os.chdir("C:\\Users\\seand\\p\\am-app")
     print("committing...")
     subprocess.run(["git", "commit", 
-        "-am", "automated28"])
+        "-am", "automated34"])
 
 def git_pull_win():
     print("changing dir to D:\\git-fd-backup\\am-app...")
