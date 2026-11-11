@@ -1,4 +1,8 @@
 This makes the paths work
 
-cd build
-../cli -run-websockets
+rm -r build
+mkdir build && cd build
+cmake ..
+cmake --build .
+./cli -create-db
+./cli -run-websockets

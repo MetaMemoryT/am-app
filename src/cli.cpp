@@ -40,6 +40,13 @@ int runPy(char** argv) {
         return 1;
     }
 
+    status = PyWideStringList_Append(&config.module_search_paths, L"/usr/lib/python3.13/lib-dynload/");
+    if (PyStatus_Exception(status)) {
+        PyConfig_Clear(&config);
+        return 1;
+    }
+
+
     status = PyWideStringList_Append(&config.module_search_paths, L"/home/vboxuser/p/am-app/src/app/");
     if (PyStatus_Exception(status)) {
         PyConfig_Clear(&config);
@@ -144,7 +151,7 @@ int main(int argc, char** argv)
 		PyObject *strargs = Py_BuildValue("(,)");
         PyObject_CallObject(strfunc, strargs);
         PyErr_Print();
-        Py_Finalize();
+        // Py_Finalize();
 
     }
     if (strcmp( argv[1], "-create-db") == 0) {
@@ -153,9 +160,24 @@ int main(int argc, char** argv)
         PyErr_Print();
         // PyObject *strfunc = PyObject_GetAttrString(mymod, "run");
 		// PyObject *strargs = Py_BuildValue("");
-        // PyEval_CallObject(strfunc, strargs);
+        // PyObject_CallObject(strfunc, strargs);
         PyErr_Print();
 
+    }
+    if (strcmp( argv[1], "-run-test-dict") == 0) {
+        // based off test 17 in graphics-engine
+        runPy(argv);
+
+        PyObject *d = PyDict_New();
+
+        buildTemplateMap();
+        buildRouteMap();
+        for( auto it = rMap.begin(); it != rMap.end(); ++it ) {
+            PyObject *a = Py_BuildValue("s", it->first.c_str());
+            PyObject *a_val = Py_BuildValue("s", it->second.c_str());
+            cout << it->first.c_str();
+            PyDict_SetItem(d, a, a_val);
+        }
     }    
     if (strcmp( argv[1], "-run-websockets") == 0) {
         // based off test 17 in graphics-engine

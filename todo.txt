@@ -68,6 +68,15 @@
 / --fd-to-mac-no-commit
 / --win-to-fd
 / --fd-to-win
+/ Sujit Ahirrao
+/ Md Rashed Ur Rahman
+/ ./cli -generate-seq
+
+/ ./cli -create-db
+/ ./cli -run-py
+/ ./cli -run-dict
+/ ./cli -test-template
+/ ./cli -run-websockets
 get am-app running on windows
 
 pathname compression

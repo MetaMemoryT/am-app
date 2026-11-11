@@ -9,4 +9,5 @@ using namespace std;
 map<string, string> tMap;
 map<string, string> rMap;
 vector<string> parseTemplateFile();
-void buildMap();
+void buildTemplateMap();
+void buildRouteMap();
