@@ -1,3 +1,4 @@
+#define PY_SSIZE_T_CLEAN
 // Name of program mainreturn.cpp
 #include <iostream>
 #include <Python.h>
@@ -7,7 +8,56 @@
 
 using namespace std;
   
-void runPy() {
+int runPy(char** argv) {
+    PyStatus status;
+    PyConfig config;
+    
+    // 1. Initialize default Python configuration
+    PyConfig_InitPythonConfig(&config);
+    
+    // 2. Set program name (optional, but good practice)
+    status = PyConfig_SetBytesString(&config, &config.program_name, argv[0]);
+    if (PyStatus_Exception(status)) {
+        PyConfig_Clear(&config);
+        return 1;
+    }
+    
+    // 3. Read the default configuration
+    status = PyConfig_Read(&config);
+    if (PyStatus_Exception(status)) {
+        PyConfig_Clear(&config);
+        return 1;
+    }
+    
+    // 4. Override / set custom module search paths (sys.path)
+    config.module_search_paths_set = 1; // Tell Python we are defining sys.path manually
+    
+    // Clear existing paths if you want a completely isolated path list,
+    // or use PyWideStringList_Append to add paths
+    status = PyWideStringList_Append(&config.module_search_paths, L"/usr/lib/python3.13/");
+    if (PyStatus_Exception(status)) {
+        PyConfig_Clear(&config);
+        return 1;
+    }
+
+    status = PyWideStringList_Append(&config.module_search_paths, L"/home/vboxuser/p/am-app/src/app/");
+    if (PyStatus_Exception(status)) {
+        PyConfig_Clear(&config);
+        return 1;
+    }
+
+    // 5. Initialize Python with the custom configuration
+    status = Py_InitializeFromConfig(&config);
+    if (PyStatus_Exception(status)) {
+        PyConfig_Clear(&config);
+        return 1;
+    }
+    
+    PyConfig_Clear(&config);
+
+    // Run Python code or embedded logic here...
+    return 0;
+
 
     /*
 	if (PyImport_AppendInittab("low", PyInit_lowModule) == -1) {
@@ -17,6 +67,8 @@ void runPy() {
     */
     // Py_SetPath(L"/Users/seanusick/p/python-embed/libs/cpython/Lib:/Users/seanusick/p/python-embed/libs/cpython/build/lib.macosx-11.5-x86_64-3.10:/Volumes/t3/am-app/src/app");
 
+
+    /*
     Py_SetPath(L"/Users/seanusick/p/python-embed/libs/cpython/Lib:/Users/seanusick/p/python-embed/libs/cpython/build/lib.macosx-11.5-x86_64-3.10:/Users/seanusick/p/am-app/src/app");
     Py_SetPythonHome(L"/Users/seanusick/p/python-embed/libs/cpython/Lib:/Users/seanusick/p/python-embed/libs/cpython/build/lib.macosx-11.5-x86_64-3.10");
 
@@ -27,6 +79,7 @@ void runPy() {
     if (!Py_IsInitialized()) {
         printf("Failed to initialize python interpreter.");
     }
+    */
 }
 
 int main(int argc, char** argv)
@@ -49,17 +102,17 @@ int main(int argc, char** argv)
 
     int globalResult;
     if (strcmp( argv[1], "-run-py") == 0) {
-        runPy();
+        runPy(argv);
         PyObject *mymod = PyImport_ImportModule("simple");
         PyObject *strfunc = PyObject_GetAttrString(mymod, "fun1");
         PyObject *strargs = Py_BuildValue("si", "abc3", 4);
-        PyObject *ret = PyEval_CallObject(strfunc, strargs);
+        PyObject *ret = PyObject_CallObject(strfunc, strargs);
         PyArg_Parse(ret, "i", &globalResult);
         cout << globalResult << "\n";
     }
 
     if (strcmp( argv[1], "-run-dict") == 0) {
-        runPy();
+        runPy(argv);
         PyObject *d = PyDict_New();
         PyObject *a = Py_BuildValue("s", "a");
         PyObject *a_val = Py_BuildValue("s", "a_val");
@@ -78,23 +131,24 @@ int main(int argc, char** argv)
         PyObject *strfunc = PyObject_GetAttrString(mymod, "dictFun");
         PyObject *strargs = Py_BuildValue("(O)", d);
         PyErr_Print();
-        PyObject *ret = PyEval_CallObject(strfunc, strargs);
+        PyObject *ret = PyObject_CallObject(strfunc, strargs);
         PyErr_Print();
         PyArg_Parse(ret, "i", &globalResult);
         cout << "return value: " << globalResult << "\n";
     }
     if (strcmp( argv[1], "-generate-seq") == 0) {
-        runPy();
+        runPy(argv);
         PyObject *mymod = PyImport_ImportModule("generateSeq");
         PyErr_Print();
-        // PyObject *strfunc = PyObject_GetAttrString(mymod, "run");
-		// PyObject *strargs = Py_BuildValue("");
-        // PyEval_CallObject(strfunc, strargs);
+        PyObject *strfunc = PyObject_GetAttrString(mymod, "run");
+		PyObject *strargs = Py_BuildValue("(,)");
+        PyObject_CallObject(strfunc, strargs);
         PyErr_Print();
+        Py_Finalize();
 
     }
     if (strcmp( argv[1], "-create-db") == 0) {
-        runPy();
+        runPy(argv);
         PyObject *mymod = PyImport_ImportModule("createDb");
         PyErr_Print();
         // PyObject *strfunc = PyObject_GetAttrString(mymod, "run");
@@ -105,7 +159,7 @@ int main(int argc, char** argv)
     }    
     if (strcmp( argv[1], "-run-websockets") == 0) {
         // based off test 17 in graphics-engine
-        runPy();
+        runPy(argv);
 
         PyObject *d = PyDict_New();
 
@@ -122,7 +176,7 @@ int main(int argc, char** argv)
         PyErr_Print();
         PyObject *strfunc = PyObject_GetAttrString(mymod, "run");
 		PyObject *strargs = Py_BuildValue("(O)", d);
-        PyEval_CallObject(strfunc, strargs);
+        PyObject_CallObject(strfunc, strargs);
         PyErr_Print();
     }
 

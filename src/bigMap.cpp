@@ -1,7 +1,7 @@
 vector<string> parseTemplateFile() {
     string line;
     string t2 = "";
-    ifstream myfile("/Users/seanusick/p/am-app/src/templates.txt");
+    ifstream myfile("/home/vboxuser/p/am-app/src/templates.txt");
     vector<string> vtr;
     while ( getline (myfile,line) ) {
         // cout << "test2";

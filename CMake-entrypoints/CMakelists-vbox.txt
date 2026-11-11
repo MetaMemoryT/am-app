@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.12)
+project(EmbedPythonExample LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Find Python 3 headers and embedding libraries
+find_package(Python3 REQUIRED COMPONENTS Development.Embed)
+
+# Define your C++ executable
+add_executable(cli src/cli.cpp)
+
+# Link against the Python embedding target
+target_link_libraries(cli PRIVATE Python3::Python)
