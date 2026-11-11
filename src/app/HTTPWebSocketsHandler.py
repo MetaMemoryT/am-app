@@ -107,6 +107,9 @@ class HTTPWebSocketsHandler(SimpleHTTPRequestHandler):
         secondArg = self.rfile.read(1)
         print("firstArg: ", firstArg)
         print("secondArg: ", secondArg)
+        if not firstArg or not secondArg:
+            #an empty read means the client closed the socket
+            raise WebSocketError("client disconnected")
         self.opcode = ord(firstArg) & 0x0F
         length = ord(secondArg) & 0x7F
         # print("self.opcode: ", self.opcode)
