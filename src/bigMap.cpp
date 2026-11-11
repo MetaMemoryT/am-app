@@ -6,6 +6,8 @@ vector<string> parseTemplateFile() {
     while ( getline (myfile,line) ) {
         // cout << "test2";
         // cout << line;
+        // strip the trailing \r left by windows line endings
+        if (!line.empty() && line.back() == '\r') line.pop_back();
         if (line == "--") {
             vtr.push_back(t2);
             t2 = "";
@@ -26,6 +28,10 @@ vector<string> parseTemplateFile() {
 void buildTemplateMap() {
     // gives templates names
     vector<string> vtr = parseTemplateFile();
+    if (vtr.size() < 19) {
+        cerr << "templates.txt: expected 19 templates, found " << vtr.size() << "\n";
+        exit(1);
+    }
     tMap["page1"] = vtr[0];
     tMap["page2"] = vtr[1];
     tMap["webSocketsHelloWorld"] = vtr[2];
