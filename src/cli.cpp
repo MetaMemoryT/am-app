@@ -89,8 +89,22 @@ int runPy(char** argv) {
     */
 }
 
+// prints the python error and exits instead of segfaulting on a NULL result
+PyObject* check(PyObject *obj) {
+    if (obj == NULL) {
+        PyErr_Print();
+        exit(1);
+    }
+    return obj;
+}
+
 int main(int argc, char** argv)
 {
+    if (argc < 2) {
+        cout << "usage: " << argv[0] << " <command>" << "\n";
+        return 1;
+    }
+
     /*
     cout << "You have entered " << argc
          << " arguments:" << "\n";
@@ -110,10 +124,10 @@ int main(int argc, char** argv)
     int globalResult;
     if (strcmp( argv[1], "-run-py") == 0) {
         runPy(argv);
-        PyObject *mymod = PyImport_ImportModule("simple");
-        PyObject *strfunc = PyObject_GetAttrString(mymod, "fun1");
+        PyObject *mymod = check(PyImport_ImportModule("simple"));
+        PyObject *strfunc = check(PyObject_GetAttrString(mymod, "fun1"));
         PyObject *strargs = Py_BuildValue("si", "abc3", 4);
-        PyObject *ret = PyObject_CallObject(strfunc, strargs);
+        PyObject *ret = check(PyObject_CallObject(strfunc, strargs));
         PyArg_Parse(ret, "i", &globalResult);
         cout << globalResult << "\n";
     }
@@ -133,30 +147,30 @@ int main(int argc, char** argv)
         const char* s = PyUnicode_AsUTF8(objectsRepresentation);
         cout << "python object" << s << "\n";
 
-        PyObject *mymod = PyImport_ImportModule("dictDemo");
+        PyObject *mymod = check(PyImport_ImportModule("dictDemo"));
         PyErr_Print();
-        PyObject *strfunc = PyObject_GetAttrString(mymod, "dictFun");
+        PyObject *strfunc = check(PyObject_GetAttrString(mymod, "dictFun"));
         PyObject *strargs = Py_BuildValue("(O)", d);
         PyErr_Print();
-        PyObject *ret = PyObject_CallObject(strfunc, strargs);
+        PyObject *ret = check(PyObject_CallObject(strfunc, strargs));
         PyErr_Print();
         PyArg_Parse(ret, "i", &globalResult);
         cout << "return value: " << globalResult << "\n";
     }
     if (strcmp( argv[1], "-generate-seq") == 0) {
         runPy(argv);
-        PyObject *mymod = PyImport_ImportModule("generateSeq");
+        PyObject *mymod = check(PyImport_ImportModule("generateSeq"));
         PyErr_Print();
-        PyObject *strfunc = PyObject_GetAttrString(mymod, "run");
-		PyObject *strargs = Py_BuildValue("(,)");
-        PyObject_CallObject(strfunc, strargs);
+        PyObject *strfunc = check(PyObject_GetAttrString(mymod, "run"));
+		PyObject *strargs = Py_BuildValue("()");
+        check(PyObject_CallObject(strfunc, strargs));
         PyErr_Print();
         // Py_Finalize();
 
     }
     if (strcmp( argv[1], "-create-db") == 0) {
         runPy(argv);
-        PyObject *mymod = PyImport_ImportModule("createDb");
+        PyObject *mymod = check(PyImport_ImportModule("createDb"));
         PyErr_Print();
         // PyObject *strfunc = PyObject_GetAttrString(mymod, "run");
 		// PyObject *strargs = Py_BuildValue("");
@@ -194,11 +208,11 @@ int main(int argc, char** argv)
         }
 
 
-        PyObject *mymod = PyImport_ImportModule("webSocketsServer");
+        PyObject *mymod = check(PyImport_ImportModule("webSocketsServer"));
         PyErr_Print();
-        PyObject *strfunc = PyObject_GetAttrString(mymod, "run");
+        PyObject *strfunc = check(PyObject_GetAttrString(mymod, "run"));
 		PyObject *strargs = Py_BuildValue("(O)", d);
-        PyObject_CallObject(strfunc, strargs);
+        check(PyObject_CallObject(strfunc, strargs));
         PyErr_Print();
     }
 

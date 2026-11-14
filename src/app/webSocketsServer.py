@@ -14,7 +14,7 @@ from importlib import reload
 import reloadableWebSocketServer
 import sqlite3
 import random
-import cgi
+from email.parser import BytesParser
 
 if len(sys.argv) > 1:
     port = int(sys.argv[1])
@@ -128,10 +128,17 @@ class WSResponse(HTTPWebSocketsHandler):
             # body = self.rfile.read(content_length)
             print("test1")
             # print(body)
-            ctype, pdict = cgi.parse_header(self.headers['content-type'])
+            ctype = self.headers.get_content_type()
+            pdict = {"boundary": self.headers.get_param("boundary")}
             print(pdict)
             if ctype == 'multipart/form-data':
-                postvars = cgi.parse_multipart(self.rfile, pdict)
+                # the cgi module was removed in python 3.13, parse the form with email instead
+                body = self.rfile.read(content_length)
+                header = b"Content-Type: " + self.headers['content-type'].encode() + b"\r\n\r\n"
+                postvars = {}
+                for part in BytesParser().parsebytes(header + body).get_payload():
+                    name = part.get_param("name", header="content-disposition")
+                    postvars.setdefault(name, []).append(part.get_payload(decode=True))
                 print(postvars)
             print("test2")
             print(self.headers)
