@@ -24,7 +24,7 @@ def installFor(t,l):
     m = re.search("{for.+\n",t)
     header = t[0:m.start()]
     rest = t[m.end():]
-    m2 = re.search("\{end for\}", rest)
+    m2 = re.search(r"\{end for\}", rest)
     #print(m.end())
     inner = rest[0:m2.start()]
     #print(header)

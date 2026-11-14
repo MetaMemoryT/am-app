@@ -77,7 +77,10 @@
 / ./cli -run-dict
 / ./cli -test-template
 / ./cli -run-websockets
-get am-app running on windows
+/ get am-app running on windows
+
+home2
+new home login see pictures
 
 pathname compression
 
