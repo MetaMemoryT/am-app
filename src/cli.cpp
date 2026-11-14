@@ -189,7 +189,7 @@ int main(int argc, char** argv)
         for( auto it = rMap.begin(); it != rMap.end(); ++it ) {
             PyObject *a = Py_BuildValue("s", it->first.c_str());
             PyObject *a_val = Py_BuildValue("s", it->second.c_str());
-            cout << it->first.c_str();
+            cout << it->first.c_str() << "\n";
             PyDict_SetItem(d, a, a_val);
         }
     }    
