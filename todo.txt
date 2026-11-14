@@ -81,6 +81,7 @@
 
 home2
 new home login see pictures
+publish
 
 pathname compression
 
